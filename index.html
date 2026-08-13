@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UET GPA Calculator | SGPA &amp; CGPA Calculator</title>
+    <meta name="description" content="Free UET GPA Calculator for students. Calculate SGPA, CGPA, credit-weighted GPA, grades and academic performance easily.">
+    <meta name="author" content="UET GPA Calculator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://uet-gpa.github.io/gpa-cal/">
+    <meta name="theme-color" content="#2563eb">
+    <!-- Open Graph -->
+    <meta property="og:title" content="UET GPA Calculator | SGPA &amp; CGPA Calculator">
+    <meta property="og:description" content="Free UET GPA Calculator for students. Calculate SGPA, CGPA, credit-weighted GPA, grades and academic performance easily.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://uet-gpa.github.io/gpa-cal/">
+    <meta property="og:image" content="https://uet-gpa.github.io/gpa-cal/assets/images/gpa-og.svg">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="UET GPA Calculator | SGPA &amp; CGPA Calculator">
+    <meta name="twitter:description" content="Free UET GPA Calculator for students. Calculate SGPA, CGPA, credit-weighted GPA, grades and academic performance easily.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="favicon/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ===== HEADER / NAVIGATION ===== -->
+    <header class="site-header" role="banner">
+        <div class="header-inner container">
+            <a href="#" class="logo" aria-label="UET GPA Calculator home">
+                <img src="assets/images/logo.png" alt="UET Taxila logo" class="logo-img" width="40" height="40">
+                <span class="logo-text">UET GPA Calculator</span>
+            </a>
+            <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <nav id="nav-menu" class="nav" role="navigation" aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="#calculator" data-nav>Calculator</a></li>
+                    <li><a href="#sgpa" data-nav>SGPA</a></li>
+                    <li><a href="#cgpa" data-nav>CGPA</a></li>
+                    <li><a href="#improvement" data-nav>Improvement</a></li>
+                    <li><a href="#how" data-nav>How It Works</a></li>
+                    <li><a href="#faq" data-nav>FAQ</a></li>
+                    <li><button type="button" class="theme-toggle" aria-label="Toggle dark mode"></button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- ===== HERO ===== -->
+        <section class="hero">
+            <div class="hero-inner container">
+                <div class="hero-text">
+                    <h1>Calculate Your GPA with Confidence</h1>
+                    <p class="hero-sub">Quickly calculate your SGPA and CGPA using your subjects, grades, and credit hours.</p>
+                    <div class="hero-buttons">
+                        <a href="#sgpa" class="btn btn-primary" id="hero-cta">Calculate My GPA</a>
+                        <a href="#how" class="btn btn-ghost" id="hero-how">How It Works</a>
+                    </div>
+                    <p class="save-note" id="save-note"><span class="save-dot"></span> Your calculations are saved locally in this browser.</p>
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- ===== SGPA CALCULATOR ===== -->
+        <section id="sgpa" class="section sgpa-section">
+            <div class="container">
+                <header class="section-header">
+                    <h2>SGPA Calculator</h2>
+                    <p class="section-desc">Add your subjects, enter credit hours, select your grades, and calculate your semester GPA.</p>
+                </header>
+
+                <div class="calc-toolbar">
+                    <button type="button" class="btn btn-outline" id="add-subject">+ Add Subject</button>
+                    <div class="toolbar-actions">
+                        <button type="button" class="btn btn-ghost" id="reset-sgpa">Reset Calculator</button>
+                        <button type="button" class="btn btn-success" id="calc-sgpa">Calculate SGPA</button>
+                    </div>
+                </div>
+
+                <!-- Empty state -->
+                <div id="subject-empty" class="empty-state">
+                    <div class="empty-icon" aria-hidden="true">📊</div>
+                    <h3 class="empty-title">No subjects added yet.</h3>
+                    <p class="empty-desc">Add your first subject to calculate your SGPA.</p>
+                    <button type="button" class="btn btn-primary" id="add-subject-empty">+ Add Subject</button>
+                </div>
+
+                <!-- Subject table -->
+                <div id="subject-list" class="subject-table hidden-on-empty" style="display:none;">
+                    <div class="subject-head">
+                        <div class="subject-cell head-cell">Subject Name</div>
+                        <div class="subject-cell head-cell">Credit Hours</div>
+                        <div class="subject-cell head-cell">Grade</div>
+                        <div class="subject-cell head-cell">Grade Point</div>
+                        <div class="subject-cell head-cell">Quality Points</div>
+                        <div class="subject-cell head-cell">Action</div>
+                    </div>
+                    <!-- rows injected by JS -->
+                </div>
+
+                <!-- SGPA Result Card -->
+                <div id="sgpa-result" class="result-card hidden" role="region" aria-live="polite">
+                    <div class="sgpa-ring-wrap">
+                        <svg class="sgpa-ring" viewBox="0 0 36 36" width="160" height="160" aria-hidden="true">
+                            <circle class="sgpa-ring-bg" cx="18" cy="18" r="15.9" />
+                            <circle class="sgpa-ring-fill" cx="18" cy="18" r="15.9" />
+                        </svg>
+                        <div class="sgpa-ring-text">
+                            <span class="sgpa-ring-value" id="result-sgpa">0.00</span>
+                            <span class="sgpa-ring-label">YOUR SGPA</span>
+                        </div>
+                    </div>
+                    <p class="result-remark" id="result-remark"></p>
+                    <div class="result-stats">
+                        <div class="stat"><span class="stat-label">Total Subjects</span><span class="stat-value" id="result-total-subjects">0</span></div>
+                        <div class="stat"><span class="stat-label">Total Credit Hours</span><span class="stat-value" id="result-total-credits">0.00</span></div>
+                        <div class="stat"><span class="stat-label">Total Quality Points</span><span class="stat-value" id="result-total-qp">0.00</span></div>
+                    </div>
+                </div>
+
+                <!-- Improvement advisor -->
+                <div id="improvement-advice" class="advice-card hidden">
+                    <h3 class="advice-title">How Can You Improve?</h3>
+                    <div class="advice-body"></div>
+                </div>
+
+                <div class="calc-actions">
+                    <button type="button" class="btn btn-ghost" id="print-result">Print Result</button>
+                    <button type="button" class="btn btn-outline" id="download-result">Download Result</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== CGPA CALCULATOR ===== -->
+        <section id="cgpa" class="section cgpa-section">
+            <div class="container">
+                <header class="section-header">
+                    <h2>CGPA Calculator</h2>
+                    <p class="section-desc">Add your previous semesters and calculate your cumulative GPA using the credit-weighted average.</p>
+                </header>
+
+                <div class="calc-toolbar">
+                    <button type="button" class="btn btn-outline" id="add-semester">+ Add Semester</button>
+                    <div class="toolbar-actions">
+                        <button type="button" class="btn btn-ghost" id="reset-cgpa">Reset Semesters</button>
+                        <button type="button" class="btn btn-success" id="calc-cgpa">Calculate CGPA</button>
+                    </div>
+                </div>
+
+                <div id="semester-empty" class="empty-state">
+                    <div class="empty-icon" aria-hidden="true">📅</div>
+                    <h3 class="empty-title">No semesters added yet.</h3>
+                    <p class="empty-desc">Add your previous semesters to calculate your CGPA.</p>
+                    <button type="button" class="btn btn-primary" id="add-semester-empty">+ Add Semester</button>
+                </div>
+
+                <div id="semester-list" class="subject-table hidden-on-empty" style="display:none;">
+                    <div class="semester-head">
+                        <div class="subject-cell head-cell sem-head-name">Semester</div>
+                        <div class="subject-cell head-cell sem-head-sgpa">SGPA</div>
+                        <div class="subject-cell head-cell sem-head-credits">Credit Hours</div>
+                        <div class="subject-cell head-cell sem-head-action">Action</div>
+                    </div>
+                </div>
+
+                <div id="cgpa-result" class="result-card hidden" role="region" aria-live="polite">
+                    <div class="cgpa-summary">
+                        <h3 class="result-title">Your CGPA</h3>
+                        <p class="result-value" id="result-cgpa">0.00</p>
+                        <p class="result-remark" id="result-remark-cgpa"></p>
+                    </div>
+                    <div class="result-stats">
+                        <div class="stat"><span class="stat-label">Total Semesters</span><span class="stat-value" id="result-total-sems">0</span></div>
+                        <div class="stat"><span class="stat-label">Total Credit Hours</span><span class="stat-value" id="result-cgpa-credits">0.00</span></div>
+                        <div class="stat"><span class="stat-label">Total Quality Points</span><span class="stat-value" id="result-cgpa-qp">0.00</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== IMPROVEMENT TOOLS ===== -->
+        <section id="improvement" class="section improvement-section">
+            <div class="container">
+                <header class="section-header">
+                    <h2>Improvement Tools</h2>
+                    <p class="section-desc">Test possible grade improvements and plan for your target CGPA.</p>
+                </header>
+
+                <div class="improvement-grid">
+                    <!-- What-If GPA Calculator -->
+                    <div class="tool-card">
+                        <h3 class="tool-title">What If I Improve My Grade?</h3>
+                        <p class="tool-desc">Pick a subject, choose a new grade, and see the projected SGPA.</p>
+                        <div class="tool-form">
+                            <div class="form-field">
+                                <label for="whatif-subject">Subject</label>
+                                <select id="whatif-subject"></select>
+                            </div>
+                            <div class="form-field">
+                                <label for="whatif-grade">New Grade</label>
+                                <select id="whatif-grade"></select>
+                            </div>
+                            <p class="whatif-current" id="whatif-current">Select a subject to begin.</p>
+                        </div>
+                        <button type="button" class="btn btn-primary" id="whatif-calc">Calculate What-If</button>
+                        <div id="whatif-result" class="tool-result hidden">
+                            <div class="tool-result-row"><span>Current SGPA</span><span class="wif-current">0.00</span></div>
+                            <div class="tool-result-row"><span>Projected SGPA</span><span class="wif-projected">0.00</span></div>
+                            <div class="tool-result-row highlight"><span>Improvement</span><span class="wif-improvement">+0.00</span></div>
+                        </div>
+                    </div>
+
+                    <!-- CGPA Target Calculator -->
+                    <div class="tool-card">
+                        <h3 class="tool-title">CGPA Target Calculator</h3>
+                        <p class="tool-desc">Enter your current standing and a target CGPA to find the average you need.</p>
+                        <div class="tool-form">
+                            <div class="form-field"><label for="t-current-cgpa">Current CGPA</label><input type="number" id="t-current-cgpa" min="0" max="4" step="0.01" inputmode="decimal"></div>
+                            <div class="form-field"><label for="t-completed-credits">Completed Credit Hours</label><input type="number" id="t-completed-credits" min="0" step="0.5" inputmode="decimal"></div>
+                            <div class="form-field"><label for="t-target-cgpa">Target CGPA</label><input type="number" id="t-target-cgpa" min="0" max="4" step="0.01" inputmode="decimal"></div>
+                            <div class="form-field"><label for="t-remaining-credits">Remaining Credit Hours</label><input type="number" id="t-remaining-credits" min="0.5" step="0.5" inputmode="decimal"></div>
+                        </div>
+                        <div class="tool-actions">
+                            <button type="button" class="btn btn-primary" id="t-calc">Calculate Target</button>
+                            <button type="button" class="btn btn-ghost" id="clear-target">Clear</button>
+                        </div>
+                        <div id="t-result" class="tool-result hidden">
+                            <div class="tool-result-row"><span>Required Avg GPA (remaining)</span><span class="tgt-required">—</span></div>
+                            <div class="tgt-message"></div>
+                            <div class="tgt-content hidden"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+     <!-- ===== HOW IT WORKS / EDUCATIONAL CONTENT ===== -->
+<section id="how" class="how-section">
+    <div class="how-container">
+        
+        <header class="how-header">
+            <h2 class="how-title">How It Works</h2>
+            <p class="how-subtitle">Understand how GPA is calculated and how to make the most of your studies.</p>
+        </header>
+
+        <div class="how-grid">
+            <article class="how-card">
+                <h3>What is SGPA?</h3>
+                <p>SGPA (Semester Grade Point Average) is the weighted average of grade points earned in a single semester, weighted by credit hours. It reflects your performance for that term only.</p>
+            </article>
+
+            <article class="how-card">
+                <h3>How is SGPA calculated?</h3>
+                <p>For each subject, multiply credit hours by the grade point to get Quality Points, then divide by total credit hours:</p>
+                <div class="formula">SGPA = Total Quality Points ÷ Total Credit Hours</div>
+            </article>
+
+            <article class="how-card">
+                <h3>What is CGPA?</h3>
+                <p>CGPA (Cumulative Grade Point Average) is the overall average across all semesters, calculated using the credit weighted average of each semester's SGPA not a simple average GPAs</p>
+            </article>
+
+            <article class="how-card">
+                <h3>How is CGPA calculated?</h3>
+                <p>Multiply each semester's SGPA by its credit hours, sum them, then divide by the total credit hours across all semesters:</p>
+                <div class="formula">CGPA = Σ(SGPA × Credits) ÷ ΣCredits</div>
+            </article>
+
+            <article class="how-card">
+                <h3>What are credit hours?</h3>
+                <p>Credit hours represent the weight of a course based on lecture/lab time per week. Higher credit courses have a larger impact on your GPA.</p>
+            </article>
+
+            <article class="how-card">
+                <h3>SGPA vs. CGPA  difference?</h3>
+                <p>SGPA measures a single semester; CGPA measures your entire academic career. High-credit courses shift your CGPA more than smaller ones.</p>
+            </article>
+
+            <article class="how-card">
+                <h3>How to improve your GPA?</h3>
+                <p>Focus first on courses with higher credit hours and lower grades. The Improvement Tools let you test scenarios before retaking classes.</p>
+            </article>
+        </div>
+
+    </div>
+</section>
+        <!-- ===== FAQ ===== -->
+        <section id="faq" class="section faq-section">
+            <div class="container">
+                <header class="section-header">
+                    <h2>Frequently Asked Questions</h2>
+                    <p class="section-desc">Quick answers to common questions about the calculator.</p>
+                </header>
+                <div class="faq-list" role="group" aria-label="FAQ">
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a1"><span>What is SGPA?</span><span class="faq-toggle">▾</span></button>
+                        <div id="faq-a1" class="faq-answer" hidden>SGPA (Semester Grade Point Average) is the average of your grade points in a single semester, weighted by credit hours.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a2"><span>What is CGPA?</span><span class="faq-toggle">▾</span></button>
+                        <div id="faq-a2" class="faq-answer" hidden>CGPA (Cumulative Grade Point Average) is the weighted average of your semester GPAs across your whole academic record.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a3"><span>How is SGPA calculated?</span><span class="faq-toggle">▾</span></button>
+                        <div id="faq-a3" class="faq-answer" hidden>Divide the sum of (credit hours × grade point) for every subject by the total credit hours.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a4"><span>How is CGPA calculated?</span><span class="faq-toggle">▾</span></button>
+                        <div id="faq-a4" class="faq-answer" hidden>Sum each semester's (SGPA × credit hours), then divide by the total credit hours of all semesters.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a5"><span>Why are credit hours important?</span><span class="faq-toggle">▾</span></button>
+                        <div id="faq-a5" class="faq-answer" hidden>Credit hours weight each course. Higher-credit courses move your GPA more, so enter them accurately.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a6"><span>Can I add unlimited subjects?</span><span class="faq-toggle">▾</span></button>
+                        <div id="faq-a6" class="faq-answer" hidden>Yes you can add as many subjects or semesters as you need.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a7"><span>Are my calculations saved?</span><span class="faq-toggle">▾</span></button>
+                        <div id="faq-a7" class="faq-answer" hidden>Your data is saved in your browser's localStorage and restored when you reopen the page  no account required.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a8"><span>Does this website require an account?</span><span class="faq-toggle">▾</span></button>
+                        <div id="faq-a8" class="faq-answer" hidden>No, Everything runs locally in your browser. We never collect personal information.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a9"><span>Can I print my GPA result?</span><span class="faq-toggle">▾</span></button>
+                        <div id="faq-a9" class="faq-answer" hidden>Yes use the "Print Result" (or "Download Result") button after calculating your GPA.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a10"><span>Is this an official university website?</span><span class="faq-toggle">▾</span></button>
+                        <div id="faq-a10" class="faq-answer" hidden>No. UET GPA Calculator is an independent student utility and is not an official university website.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-grid">
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <a href="#" class="logo" aria-label="UET GPA Calculator home">
+                        <img src="assets/images/logo.png" alt="UET Taxila logo" class="logo-img" width="40" height="40">
+                        <span class="logo-text">UET GPA Calculator</span>
+                    </a>
+                    <p>Calculate SGPA and CGPA quickly and easily entirely in your browser.</p>
+                </div>
+
+                <!-- Quick links -->
+                <nav class="footer-col" aria-label="Footer navigation">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <a href="#sgpa">SGPA Calculator</a>
+                    <a href="#cgpa">CGPA Calculator</a>
+                    <a href="#improvement">Improvement Tools</a>
+                    <a href="#how">How It Works</a>
+                    <a href="#faq">FAQ</a>
+                </nav>
+
+                <!-- About -->
+                <div class="footer-col">
+                    <h4 class="footer-heading">About</h4>
+                    <p class="footer-note">Your calculations are processed and stored entirely in your browser never sent to any server.</p>
+                    <p class="footer-disclaimer">UET GPA Calculator is an independent student utility and is not an official university website.</p>
+                </div>
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="footer-bottom">
+                <p class="footer-copy">© <span id="current-year"></span> UET GPA Calculator. All rights reserved.</p>
+                <p class="footer-credit">Website designed &amp; developed by <strong>Abdul Hadi (23-CP-78)</strong>
+                    <a class="footer-social" href="https://www.linkedin.com/in/abdul-hadi-b505622a0" target="_blank" rel="noopener noreferrer" aria-label="Connect with Abdul Hadi on LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.32-.02-3.02-1.84-3.02-1.84 0-2.12 1.44-2.12 2.92v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.84 3.36-1.84 3.6 0 4.27 2.37 4.27 5.46v6.27zM5.34 7.44a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>
+                        Connect on LinkedIn
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Confirm modal -->
+    <div id="confirm-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="confirm-title" tabindex="-1">
+        <div class="modal-content">
+            <h3 id="confirm-title">Confirm</h3>
+            <p class="confirm-message"></p>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-ghost" id="confirm-no">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirm-yes">Clear</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/gpa.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Tell search engines where the sitemap is.
+Sitemap: https://uet-gpa.github.io/gpa-cal/sitemap.xml
+
+# This is a static, client-side site. No backend, database, or login is required.
+# Everything runs in the browser; nothing is crawled as "private".
