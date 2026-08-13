@@ -99,7 +99,7 @@
 
                 <!-- Empty state -->
                 <div id="subject-empty" class="empty-state">
-                    <div class="empty-icon" aria-hidden="true">📊</div>
+                    <div class="empty-icon" aria-hidden="true">ðŸ“Š</div>
                     <h3 class="empty-title">No subjects added yet.</h3>
                     <p class="empty-desc">Add your first subject to calculate your SGPA.</p>
                     <button type="button" class="btn btn-primary" id="add-subject-empty">+ Add Subject</button>
@@ -168,7 +168,7 @@
                 </div>
 
                 <div id="semester-empty" class="empty-state">
-                    <div class="empty-icon" aria-hidden="true">📅</div>
+                    <div class="empty-icon" aria-hidden="true">ðŸ“…</div>
                     <h3 class="empty-title">No semesters added yet.</h3>
                     <p class="empty-desc">Add your previous semesters to calculate your CGPA.</p>
                     <button type="button" class="btn btn-primary" id="add-semester-empty">+ Add Semester</button>
@@ -245,7 +245,7 @@
                             <button type="button" class="btn btn-ghost" id="clear-target">Clear</button>
                         </div>
                         <div id="t-result" class="tool-result hidden">
-                            <div class="tool-result-row"><span>Required Avg GPA (remaining)</span><span class="tgt-required">—</span></div>
+                            <div class="tool-result-row"><span>Required Avg GPA (remaining)</span><span class="tgt-required">â€”</span></div>
                             <div class="tgt-message"></div>
                             <div class="tgt-content hidden"></div>
                         </div>
@@ -272,7 +272,7 @@
             <article class="how-card">
                 <h3>How is SGPA calculated?</h3>
                 <p>For each subject, multiply credit hours by the grade point to get Quality Points, then divide by total credit hours:</p>
-                <div class="formula">SGPA = Total Quality Points ÷ Total Credit Hours</div>
+                <div class="formula">SGPA = Total Quality Points Ã· Total Credit Hours</div>
             </article>
 
             <article class="how-card">
@@ -283,7 +283,7 @@
             <article class="how-card">
                 <h3>How is CGPA calculated?</h3>
                 <p>Multiply each semester's SGPA by its credit hours, sum them, then divide by the total credit hours across all semesters:</p>
-                <div class="formula">CGPA = Σ(SGPA × Credits) ÷ ΣCredits</div>
+                <div class="formula">CGPA = Î£(SGPA Ã— Credits) Ã· Î£Credits</div>
             </article>
 
             <article class="how-card">
@@ -313,43 +313,43 @@
                 </header>
                 <div class="faq-list" role="group" aria-label="FAQ">
                     <div class="faq-item">
-                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a1"><span>What is SGPA?</span><span class="faq-toggle">▾</span></button>
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a1"><span>What is SGPA?</span><span class="faq-toggle">â–¾</span></button>
                         <div id="faq-a1" class="faq-answer" hidden>SGPA (Semester Grade Point Average) is the average of your grade points in a single semester, weighted by credit hours.</div>
                     </div>
                     <div class="faq-item">
-                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a2"><span>What is CGPA?</span><span class="faq-toggle">▾</span></button>
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a2"><span>What is CGPA?</span><span class="faq-toggle">â–¾</span></button>
                         <div id="faq-a2" class="faq-answer" hidden>CGPA (Cumulative Grade Point Average) is the weighted average of your semester GPAs across your whole academic record.</div>
                     </div>
                     <div class="faq-item">
-                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a3"><span>How is SGPA calculated?</span><span class="faq-toggle">▾</span></button>
-                        <div id="faq-a3" class="faq-answer" hidden>Divide the sum of (credit hours × grade point) for every subject by the total credit hours.</div>
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a3"><span>How is SGPA calculated?</span><span class="faq-toggle">â–¾</span></button>
+                        <div id="faq-a3" class="faq-answer" hidden>Divide the sum of (credit hours Ã— grade point) for every subject by the total credit hours.</div>
                     </div>
                     <div class="faq-item">
-                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a4"><span>How is CGPA calculated?</span><span class="faq-toggle">▾</span></button>
-                        <div id="faq-a4" class="faq-answer" hidden>Sum each semester's (SGPA × credit hours), then divide by the total credit hours of all semesters.</div>
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a4"><span>How is CGPA calculated?</span><span class="faq-toggle">â–¾</span></button>
+                        <div id="faq-a4" class="faq-answer" hidden>Sum each semester's (SGPA Ã— credit hours), then divide by the total credit hours of all semesters.</div>
                     </div>
                     <div class="faq-item">
-                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a5"><span>Why are credit hours important?</span><span class="faq-toggle">▾</span></button>
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a5"><span>Why are credit hours important?</span><span class="faq-toggle">â–¾</span></button>
                         <div id="faq-a5" class="faq-answer" hidden>Credit hours weight each course. Higher-credit courses move your GPA more, so enter them accurately.</div>
                     </div>
                     <div class="faq-item">
-                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a6"><span>Can I add unlimited subjects?</span><span class="faq-toggle">▾</span></button>
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a6"><span>Can I add unlimited subjects?</span><span class="faq-toggle">â–¾</span></button>
                         <div id="faq-a6" class="faq-answer" hidden>Yes you can add as many subjects or semesters as you need.</div>
                     </div>
                     <div class="faq-item">
-                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a7"><span>Are my calculations saved?</span><span class="faq-toggle">▾</span></button>
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a7"><span>Are my calculations saved?</span><span class="faq-toggle">â–¾</span></button>
                         <div id="faq-a7" class="faq-answer" hidden>Your data is saved in your browser's localStorage and restored when you reopen the page  no account required.</div>
                     </div>
                     <div class="faq-item">
-                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a8"><span>Does this website require an account?</span><span class="faq-toggle">▾</span></button>
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a8"><span>Does this website require an account?</span><span class="faq-toggle">â–¾</span></button>
                         <div id="faq-a8" class="faq-answer" hidden>No, Everything runs locally in your browser. We never collect personal information.</div>
                     </div>
                     <div class="faq-item">
-                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a9"><span>Can I print my GPA result?</span><span class="faq-toggle">▾</span></button>
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a9"><span>Can I print my GPA result?</span><span class="faq-toggle">â–¾</span></button>
                         <div id="faq-a9" class="faq-answer" hidden>Yes use the "Print Result" (or "Download Result") button after calculating your GPA.</div>
                     </div>
                     <div class="faq-item">
-                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a10"><span>Is this an official university website?</span><span class="faq-toggle">▾</span></button>
+                        <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-a10"><span>Is this an official university website?</span><span class="faq-toggle">â–¾</span></button>
                         <div id="faq-a10" class="faq-answer" hidden>No. UET GPA Calculator is an independent student utility and is not an official university website.</div>
                     </div>
                 </div>
@@ -391,7 +391,7 @@
 
             <!-- Bottom bar -->
             <div class="footer-bottom">
-                <p class="footer-copy">© <span id="current-year"></span> UET GPA Calculator. All rights reserved.</p>
+                <p class="footer-copy">Â© <span id="current-year"></span> UET GPA Calculator. All rights reserved.</p>
                 <p class="footer-credit">Website designed &amp; developed by <strong>Abdul Hadi (23-CP-78)</strong>
                     <a class="footer-social" href="https://www.linkedin.com/in/abdul-hadi-b505622a0" target="_blank" rel="noopener noreferrer" aria-label="Connect with Abdul Hadi on LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.32-.02-3.02-1.84-3.02-1.84 0-2.12 1.44-2.12 2.92v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.84 3.36-1.84 3.6 0 4.27 2.37 4.27 5.46v6.27zM5.34 7.44a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>
